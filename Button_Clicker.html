@@ -79,13 +79,24 @@
      <h2 id="counter">0</h2>
      <div id="timer"></div>
      <audio id="dream-speedrun" src="https://www.youtube.com/watch?v=AplG-bmjOYE"></audio>
+     <div class="button-container">
+           <button onclick="Restart()">Restart</button>
+         </div>
      <script>
        let count = 0;
        let startTime;
        const counter = document.getElementById("counter");
        const timer = document.getElementById("timer");
        const dreamSpeedrun = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
- 
+       
+       function Restart() {
+           count = 0;
+           counter.innerText = 0;
+           timer.innerText = "";
+           dreamSpeedrun.currentTime = 0;
+           dreamSpeedrun.pause();
+         }
+     
        function increment() {
          count++;
          counter.innerText = count;
@@ -93,12 +104,12 @@
          counter.offsetHeight;
          counter.style.animation = 'pulse 0.5s ease-out';
          counter.style.animationFillMode = 'backwards';
- 
+     
          if (count === 1) {
            startTime = new Date
            dreamSpeedrun.play();
          }
- 
+     
          if (count === 100) {
            dreamSpeedrun.pause();
            const endTime = new Date();
