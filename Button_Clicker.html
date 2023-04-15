@@ -1,107 +1,111 @@
-<!DOCTYPE html> 
-<html>
-  <head>
-    <title>Button Clicker</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #828080 0%, #f2f2f2 100%);
-        background-attachment: fixed;
-        background-size: cover;
-      }
-      h1 {
-        text-align: center;
-        margin-top: 50px;
-        margin-bottom: 30px;
-        font-size: 40px;
-        color: #333;
-      }
-      .button-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      button {
-        background-color: #4CAF50;
-        border: none;
-        color: white;
-        padding: 20px 40px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 30px;
-        margin: 20px;
-        cursor: pointer;
-        border-radius: 10px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s ease-in-out;
-      }
-      button:hover {
-        background-color: #3e8e41;
-        transform: scale(1.1);
-      }
-      #counter {
-        text-align: center;
-        font-size: 100px;
-        color: #333;
-        margin-top: 50px;
-        animation: pulse 0.5s ease-out;
-        animation-fill-mode: backwards;
-      }
-      @keyframes pulse {
-        0% {
-          color: #4CAF50;
-        }
-        100% {
-          color: #333;
-        }
-      }
-      #timer {
-        text-align: center;
-        font-size: 30px;
-        color: #333;
-        margin-top: 50px;
-      }
-      #instructions {
-        text-align: center;
-        font-size: 20px;
-        color: #555;
-        margin-top: 50px;2
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Button Clicker</h1>
-    <div id="instructions">Get to 100 as fast as you can!</div>
-    <div class="button-container">
-      <button onclick="increment()">Add 1</button>
-    </div>
-    <h2 id="counter">0</h2>
-    <div id="timer"></div>
-    <script>
-      let count = 0;
-      let startTime;
-      const counter = document.getElementById("counter");
-      const timer = document.getElementById("timer");
-
-      function increment() {
-        count++;
-        counter.innerText = count;
-        counter.style.animation = 'none';
-        counter.offsetHeight;
-        counter.style.animation = 'pulse 0.5s ease-out';
-        counter.style.animationFillMode = 'backwards';
-
-        if (count === 1) {
-          startTime = new Date();
-        }
-
-        if (count === 100) {
-          const endTime = new Date();
-          const totalTime = (endTime - startTime) / 1000;
-          timer.innerText = 'Time to reach 100: ' + totalTime + ' seconds';
-        }
-      }
-    </script>
-  </body>
-</html>
+ <!DOCTYPE html> 
+ <html>
+   <head>
+     <title>Button Clicker</title>
+     <style>
+       body {
+         font-family: Arial, sans-serif;
+         background: linear-gradient(135deg, #828080 0%, #f2f2f2 100%);
+         background-attachment: fixed;
+         background-size: cover;
+       }
+       h1 {
+         text-align: center;
+         margin-top: 50px;
+         margin-bottom: 30px;
+         font-size: 40px;
+         color: #333;
+       }
+       .button-container {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+       }
+       button {
+         background-color: #4CAF50;
+         border: none;
+         color: white;
+         padding: 20px 40px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         font-size: 30px;
+         margin: 20px;
+         cursor: pointer;
+         border-radius: 10px;
+         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+         transition: all 0.3s ease-in-out;
+       }
+       button:hover {
+         background-color: #3e8e41;
+         transform: scale(1.1);
+       }
+       #counter {
+         text-align: center;
+         font-size: 100px;
+         color: #333;
+         margin-top: 50px;
+         animation: pulse 0.5s ease-out;
+         animation-fill-mode: backwards;
+       }
+       @keyframes pulse {
+         0% {
+           color: #4CAF50;
+         }
+         100% {
+           color: #333;
+         }
+       }
+       #timer {
+         text-align: center;
+         font-size: 30px;
+         color: #333;
+         margin-top: 50px;
+       }
+       #instructions {
+         text-align: center;
+         font-size: 20px;
+         color: #555;
+         margin-top: 50px;2
+       }
+     </style>
+   </head>
+   <body>
+     <h1>Button Clicker</h1>
+     <div id="instructions">Get to 100 as fast as you can!</div>
+     <div class="button-container">
+       <button onclick="increment()">Add 1</button>
+     </div>
+     <h2 id="counter">0</h2>
+     <div id="timer"></div>
+     <audio id="dream-speedrun" src="https://www.youtube.com/watch?v=AplG-bmjOYE"></audio>
+     <script>
+       let count = 0;
+       let startTime;
+       const counter = document.getElementById("counter");
+       const timer = document.getElementById("timer");
+       const dreamSpeedrun = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
+ 
+       function increment() {
+         count++;
+         counter.innerText = count;
+         counter.style.animation = 'none';
+         counter.offsetHeight;
+         counter.style.animation = 'pulse 0.5s ease-out';
+         counter.style.animationFillMode = 'backwards';
+ 
+         if (count === 1) {
+           startTime = new Date
+           dreamSpeedrun.play();
+         }
+ 
+         if (count === 100) {
+           dreamSpeedrun.pause();
+           const endTime = new Date();
+           const totalTime = (endTime - startTime) / 1000;
+           timer.innerText = 'Time to reach 100: ' + totalTime + ' seconds';
+         }
+       }
+     </script>
+   </body>
+ </html>
