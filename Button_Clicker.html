@@ -96,6 +96,12 @@
            dreamSpeedrun.currentTime = 0;
            dreamSpeedrun.pause();
          }
+         
+         document.addEventListener("keydown", function(event) {
+             if (event.keyCode === 82) { // keyCode 82 is the "r" key
+               Restart();
+             }
+           });
      
        function increment() {
          count++;
