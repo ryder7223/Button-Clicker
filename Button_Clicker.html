@@ -68,6 +68,17 @@
          color: #555;
          margin-top: 50px;2
        }
+       #dedication {
+         position: fixed;
+         bottom: 0;
+         left: 0;
+         right: 0;
+         text-align: center;
+         padding: 20px;
+         font-size: 15px;
+         color: #333;
+         font-weight: bold;
+       }
      </style>
    </head>
    <body>
@@ -82,6 +93,8 @@
      <div class="button-container">
            <button onclick="Restart()">Restart</button>
          </div>
+    <div id="dedication">dedicated to <a href="https://www.youtube.com/@noticxgd">@NoticxFPS</a>
+        </div>
      <script>
        let count = 0;
        let startTime;
@@ -96,12 +109,6 @@
            dreamSpeedrun.currentTime = 0;
            dreamSpeedrun.pause();
          }
-         
-         document.addEventListener("keydown", function(event) {
-             if (event.keyCode === 82) { // keyCode 82 is the "r" key
-               Restart();
-             }
-           });
      
        function increment() {
          count++;
