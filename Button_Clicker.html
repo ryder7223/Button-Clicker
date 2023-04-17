@@ -124,6 +124,12 @@
            startTime = new Date();
            dreamSpeedrun.play();
          }
+         
+         document.addEventListener("keydown", function(event) {
+             if (event.keyCode === 82) { // keyCode 82 is the "r" key
+               Restart();
+             }
+           });
        
          document.body.onkeydown = function(e) {
            if (e.keyCode === 32) {
