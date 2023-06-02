@@ -1,0 +1,177 @@
+ <!DOCTYPE html> 
+  <html>
+    <head>
+      <title>Button Clicker</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          background: linear-gradient(135deg, #828080 0%, #f2f2f2 100%);
+          background-attachment: fixed;
+          background-size: cover;
+        }
+        h1 {
+          text-align: center;
+          margin-top: 0;
+          margin-bottom: 10px;
+          font-size: 40px;
+          color: #333;
+        }
+        .button-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        button {
+          background-color: #4CAF50;
+          border: none;
+          color: white;
+          padding: 30px 60px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 30px;
+          margin: 20px;
+          margin-bottom: 30px;
+          cursor: pointer;
+          border-radius: 10px;
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+          transition: all 0.3s ease-in-out;
+        }
+        button:hover {
+          background-color: #3e8e41;
+          transform: scale(1.1);
+        }
+        #counter {
+          text-align: center;
+          font-size: 100px;
+          color: #333;
+          margin-top: 0px;
+          animation: pulse 0.5s ease-out;
+          animation-fill-mode: backwards;
+        }
+        @keyframes pulse {
+          0% {
+            color: #4CAF50;
+          }
+          100% {
+            color: #333;
+          }
+        }
+        #timer {
+          text-align: center;
+          font-size: 30px;
+          color: #333;
+          margin-top: 50px;
+        }
+        #instructions {
+          text-align: center;
+          font-size: 20px;
+          color: #555;
+          margin-top: 50px;2
+        }
+        #dedication {
+          bottom: 0px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          padding: 20px;
+          font-size: 15px;
+          color: #333;
+          font-weight: bold;
+          background-color: transparent;
+        }
+        #highscore {
+          text-align: center;
+          font-size: 20px;
+          color: #555;
+          margin-top: 20px;
+          font-style: italic;
+        }
+        #CPS {
+                  text-align: center;
+                  font-size: 20px;
+                  color: #555;
+                  margin-top: 20px;
+                  font-style: italic;
+                }
+      </style>
+    </head>
+    <body>
+      <h1>Button Clicker</h1>
+      <div id="instructions">Get to 25 as fast as you can!</div>
+      <div class="button-container">
+        <button onclick="increment()">Add 1</button>
+      </div>
+      <h2 id="counter">0</h2>
+      <div id="timer"></div>
+      <div id="highscore">Best time: N/A</div>
+      <div id="CPS">Average CPS: N/A</div>
+      <audio id="dream-speedrun" src="https://www.youtube.com/watch?v=AplG-bmjOYE"></audio>
+      <div class="button-container">
+            <button onclick="Restart()">Restart</button>
+          </div>
+     <div id="dedication">dedicated to <a href="https://www.youtube.com/@noticxgd">@idk</a>
+         </div>
+      <script>
+        let count = 0;
+        let startTime;
+        const AverageCPS = Infinity;
+        let highScore = Infinity;
+        let CPS = Infinity;
+        const counter = document.getElementById("counter");
+        const timer = document.getElementById("timer");
+        const dreamSpeedrun = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
+        
+        function increment() {
+          count++;
+          counter.innerText = count;
+          counter.style.animation = 'none';
+          counter.offsetHeight;
+          counter.style.animation = 'pulse 0.5s ease-out';
+          counter.style.animationFillMode = 'backwards';
+        
+          if (count === 1) {
+            startTime = new Date();
+            dreamSpeedrun.play();
+          }
+          
+          document.addEventListener("keydown", function(event) {
+              if (event.keyCode === 82) { // keyCode 82 is the "r" key
+                Restart();
+              }
+            });
+        
+          document.body.onkeydown = function(e) {
+            if (e.keyCode === 32) { // keyCode 32 is the " " key
+              increment();
+              e.preventDefault();
+            }
+          };
+        
+          if (count === 25) {
+            dreamSpeedrun.pause();
+            const endTime = new Date();
+            const totalTime = (endTime - startTime) / 1000;
+            timer.innerText = 'Time to reach 25: ' + totalTime + ' seconds';
+            const AverageCPS = (25 / totalTime);
+            document.getElementById('CPS').innerText = 'Average CPS: ' + AverageCPS.toFixed(2);
+        
+            if (totalTime < highScore) {
+              highScore = totalTime;
+              document.getElementById('highscore').innerText = 'Best time: ' + highScore.toFixed(3) + ' seconds';
+            }
+          }
+        }
+        
+        function Restart() {
+          count = 0;
+          counter.innerText = 0;
+          timer.innerText = "";
+          CPS.innerText = "";
+          dreamSpeedrun.currentTime = 0;
+          dreamSpeedrun.pause();
+        }
+        
+      </script>
+    </body>
+  </html>
